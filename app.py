@@ -246,9 +246,9 @@ def predict():
                                    OverallCond_3,ExterQual_Fa,ExterQual_Gd,BsmtExposure_Gd, Heating_OthW, Heating_Grav,FullBath_3,BedroomAbvGr_5,KitchenAbvGr_2,TotRmsAbvGrd_8,TotRmsAbvGrd_9,TotRmsAbvGrd_10,TotRmsAbvGrd_11,TotRmsAbvGrd_12,Functional_Maj2,GarageQual_Fa,GarageQual_Gd,GarageQual_Po,GarageCond_Fa,GarageCond_Gd,GarageCond_Po,SaleCondition_Partial,Alpha_Ridge]])
         output=round(prediction[0],2)
         if output<0:
-            return render_template('index.html',prediction_texts="Sorry you cannot sell this car")
+            return render_template('index.html',prediction_texts="Sorry you cannot sell this House")
         else:
-            return render_template('index.html',prediction_text="You Can Sell The Car at {}".format(output))
+            return render_template('index.html',prediction_text="You Can Sell House at {}".format(output))
     else:
         return render_template('index.html')
 
