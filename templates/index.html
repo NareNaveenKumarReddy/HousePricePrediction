@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div style="color:white">
+        <form action="{{ url_for('predict')}}" method="post">
+            <h2>Predictive analysis</h2>
+			</select>
+            <h3>What is type of House Dwelling?</h3><br><select name="MSSubClass_160" id="MSSubClass" required="required">
+                <option value="160">2-STORY PUD - 1946 & NEWER</option>
+                <option value="90">DUPLEX - ALL STYLES AND AGES</option>
+            </select>
+			
+			</select>
+            <h3>What is Lot Configuration?</h3><br><select name="LotConfig_CulDSac" id="LotConfig" required="required">
+                <option value="CulDSac">Cul-de-sac</option>
+                <option value="Corner">Corner lot</option>
+            </select>
+			
+		    </select>
+            <h3>What is Neighborhood Physical Location within city limits?</h3><br><select name="Neighborhood_Crawfor" id="Neighborhood" required="required">
+                <option value="Crawford">Crawford</option>
+                <option value="Northridge">Northridge</option>
+                <option value="Northridge Heights">Northridge Heights</option>
+                <option value="Stone Brook">Stone Brook</option>
+                <option value="Veenker">Veenker</option>
+            </select>
+			
+			</select>
+            <h3>Rate the overall material and finish of the house</h3><br><select name="OverallQual_5" id="OverallQual" required="required">
+                <option value="Average">Average</option>
+                <option value="Above Average">Above Average</option>
+				<option value="Good">Good</option>
+                <option value="Very Good">Very Good</option>
+				<option value="Execellent">Execellent</option>
+                <option value="Very Execellent">Very Execellent</option>
+            </select>
+			
+            </select>
+            <h3>Rate the overall condition of the house</h3><br><select name="OverallCond_3" id="OverallCond" required="required">
+                <option value="Fair">Fair</option>
+                <option value="Not Fair">Not Fair</option>
+            </select>
+			
+            </select>
+            <h3>Quality of the material on the exterior </h3><br><select name="ExterQual_Fa" id="ExterQual" required="required">
+                <option value="Fair">Fair</option>
+                <option value="Good">Good</option>
+            </select>
+			
+			 </select>
+            <h3>Rate Garden level Walls Exposure </h3><br><select name="BsmtExposure_Gd" id="BsmtExposure" required="required">
+                <option value="Good Exposure">Good Exposure</option>
+                <option value="No Basement">No Basement</option>
+            </select>
+			
+			</select>
+            <h3>Type of Heating </h3><br><select name="Heating_Grav" id="Heating" required="required">
+                <option value="Grav">Gravity furnace</option>
+                <option value="OthW">Hot water or steam heat other than gas</option>
+            </select>
+			
+			</select>
+            <h3>Number of Full Bathrooms</h3><br><select name="FullBath_3" id="FullBath" required="required">
+                <option value="0">0</option>
+                <option value="1">1</option>
+				<option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+			
+			</select>
+            <h3>Number of Bedrooms</h3><br><select name="BedroomAbvGr_5" id="BedroomAbvGr" required="required">
+                <option value="0">0</option>
+                <option value="1">1</option>
+				<option value="2">2</option>
+                <option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+                <option value="6">6</option>
+				<option value="8">8</option>
+            </select>
+			
+			</select>
+            <h3>Number of kitchens</h3><br><select name="KitchenAbvGr_2" id="KitchenAbvGr" required="required">
+                <option value="0">0</option>
+                <option value="1">1</option>
+				<option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+			
+			</select>
+            <h3>Total Number of Rooms in House(Excluding Bathrooms)</h3><br><select name="TotRmsAbvGrd_8" id="TotRmsAbvGrd" required="required">
+                <option value="8">8</option>
+                <option value="9">9</option>
+				<option value="10">10</option>
+                <option value="11">11</option>
+				<option value="12">12</option>
+            </select>
+            
+			</select>
+            <h3>Home Functionality</h3><br><select name="Functional_Maj2" id="Functionality" required="required">
+                <option value="Maj2">Major Deductions 2</option>
+                <option value="Typ">Typical Functionality</option>
+            </select>
+			
+			</select>
+            <h3>Quality of the Garage of House </h3><br><select name="GarageQual_Fa" id="GarageQual" required="required">
+                <option value="Fair">Fair</option>
+                <option value="Good">Good</option>
+				<option value="Poor">Poor</option>
+            </select>
+			
+			</select>
+            <h3>Rate the Condition of the Garage </h3><br><select name="GarageCond_Fa" id="GarageCond" required="required">
+                <option value="Fair">Fair</option>
+                <option value="Good">Good</option>
+				<option value="Poor">Poor</option>
+            </select>
+			
+			</select>
+            <h3>What is Condition of sale?</h3><br><select name="SaleCondition_Partial" id="SaleCondition" required="required">
+                <option value="Partial">Home was not completed when last assessed </option>
+                <option value="Normal">Normal Sale</option>
+            </select>
+			
+            <br><br><button id="sub" type="submit ">Calculate Price</button>
+            <br>
+
+
+
+
+        </form>
+
+
+
+        <br><br><h3>{{ prediction_text }}<h3>
+    </div>
+
+
+
+
+   <style>
+        body {
+            background-color: rgb(76,175,80);
+            text-align: center;
+            padding: 0px;
+        }
+        
+        #research {
+            font-size: 18px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+        
+        #box {
+            border-radius: 60px;
+            border-color: 45px;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: rgb(168, 131, 61);
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+        
+        #fuel {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+        
+        #fuel:hover {
+            background-color: coral;
+        }
+        
+        #research {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #research:hover {
+            background-color: coral;
+        }
+        
+        #resea {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #resea:hover {
+            background-color: coral;
+        }
+        
+        #sub {
+            width: 120px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+        
+        #sub:hover {
+            background-color: darkcyan;
+        }
+        
+        #first {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        
+    </style>
+</body>
